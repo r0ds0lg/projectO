@@ -86,13 +86,6 @@ span.wordLetter {
     transition: 1.5s all;
 }
 
-/* #alphabttLetters {
-    font-family: 'Caudex', serif;
-    font-size: 1em;
-    color: #453536;
-
-} */
-
 #buttonLetters {
     display: grid;
     grid-template-columns: repeat(9, 60px);
@@ -121,12 +114,9 @@ span.wordLetter {
     pointer-events: all;
 }
 
-/* .letters.startEvent {} */
 
 .letters:hover {
     color: #5a4344;
-    /* color: #453536; */
-    /* font-size: 3.5em; */
     cursor: pointer;
     text-shadow: 0px 0px 20px #f3eded;
 }
@@ -188,13 +178,6 @@ span.wordLetter {
     transition: 1s;
 }
 
-/* .pentaComp {
-    position: absolute;
-    width: 250px;
-    opacity: 0;
-} */
-
-
 .board {
     background-image: url("images/tabletoOuija.png");
     background-size: contain;
@@ -203,8 +186,6 @@ span.wordLetter {
     height: 500px;
     margin: auto;
     position: relative;
-    /* grid-column: 1/4;
-    justify-content: center; */
 }
 
 .planchette {
@@ -215,10 +196,7 @@ span.wordLetter {
     height: 180px;
     position: absolute;
     z-index: 5;
-    /* top: 0;
-    left: 0; */
     transform: rotate(1deg);
-    /* transform: rotate(-20deg); */
     transition: 2s all;
     pointer-events: none;
     
@@ -233,7 +211,7 @@ video.static {
     bottom: 0;
     opacity: .5;
     filter: sepia();
-    z-index: 20;
+    z-index: 10;
     display: none;
 }
 
@@ -244,7 +222,7 @@ video.static {
     left: 30%;
     opacity: .8;
     filter: sepia();
-    z-index: 22;
+    z-index: 12;
 }
 
 .divWelcome {
@@ -256,7 +234,7 @@ video.static {
     left: 0;
     bottom: 0;
     opacity: .9;
-    z-index: 21;
+    z-index: 15;
     display: none;
     transition: .5s;
     animation: fadeIn .5s;
@@ -274,8 +252,6 @@ video.showIt {
 .play {
     background-color: #af9d8ead;
     position: absolute;
-    /* top: 36%;
-    left: 43%; */
     width: 220px;
     height: 220px;   
     font-family: 'Caudex', serif;
@@ -286,7 +262,7 @@ video.showIt {
     border-width: 5px;
     border-color: #3e302b;
     outline: none;
-    z-index: 14;
+    z-index: 17;
     transition: 0.5s all;
 
 }
@@ -299,6 +275,17 @@ video.showIt {
     opacity: 0;
     display: none;
     transition: 500ms;
+}
+
+span.devilWords {
+    z-index: 16;
+    position: absolute;
+    bottom: 20%;
+    left: 29%;
+    font-size: 6em;
+    font-family: 'Ruthie', cursive;
+    text-align: center;
+   
 }
 
 

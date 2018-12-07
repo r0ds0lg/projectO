@@ -12,6 +12,9 @@ const symbolPart5 = document.querySelector('.symbolPenta');
 //video Reference
 const video = document.querySelector('video');
 
+//span leyend winner or loser
+const devilWords = document.querySelector('.devilWords');
+
 //Planchette and Play button Reference
 const planchette = document.querySelector('.planchette');
 const playBtn = document.querySelector('.play');
@@ -33,6 +36,7 @@ playBtn.addEventListener("click", startGame);
 //word variables
 let selectedWord, lengthWord, splitWord, targetLetter, letterBtn, letterSpans, duration;
 let spanArray = [];
+let letterGuessed = 0;
 
 function startGame () {
     PlayBtnClicked()
@@ -88,10 +92,17 @@ letterBtn.addEventListener('click', function(e){
     for(let i=0; i< splitWord.length; i++){
         if (splitWord[i] === targetLetter) {
             letterFound = true;
+            letterGuessed++;
+            console.log(letterGuessed + ' letras correctas')
             setTimeout(function () {
                 addActiveLetters ();
                 spanArray[i].innerText = targetLetter;  
             }, 6500);
+        }
+        if (letterGuessed === splitWord.length) {
+            setTimeout(function () {
+                winner();  
+            }, 7200);
         }
     }
     if (letterFound) {
@@ -114,6 +125,13 @@ letterBtn.addEventListener('click', function(e){
 
 function addActiveLetters () {
     boardContainer.classList.add('active');
+}
+
+function tryAgainBtn () {
+    setTimeout (function() {
+        PlayBtnClicked()
+        reload()
+    },7000);
 }
 
 
@@ -813,10 +831,22 @@ let wordSelector = function (){
 }
 
 function reload () {
-    setTimeout (window.location.reload(), 15000);
+    setTimeout (window.location.reload(), 10000);
 }
 
+let guessed = 0;
 let errors = 0;
+
+function winner () {
+    document.querySelector('.welcome').src = 'maybeNextTime.webm';
+    devilWords.innerText = 'You win! maybe next time...'
+    video.classList.add('showIt');
+    document.querySelector('.devilWords').style.left = '20%';
+    setTimeout(function () {
+        showDevilWin ();
+        tryAgainBtn();  
+    }, 3000);
+}
 
 function errorSymbol () {
     errors++
@@ -836,8 +866,11 @@ function errorSymbol () {
     else if (errors === 5){
         symbolPart5.style.opacity = '1';  
         video.classList.add('showIt');
-        setTimeout (showDevilWin, 3000);
-
+        // setTimeout (showDevilWin, 3000);
+        setTimeout(function () {
+            showDevilWin ();
+            tryAgainBtn();  
+        }, 3000);
     }
     }, 2350); 
 }
